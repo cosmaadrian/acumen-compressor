@@ -63,7 +63,7 @@ print("Size after compression:", len(compressed))
 print("Size after gzip compression:", len(compressed_gzip))
 # 695
 
-print("Compression ratio:", round((1 - len(compressed) / len(test_corpus.encode('utf-8'))) * 100, 2), '%') 
+print("Compression ratio:", round((1 - len(compressed) / len(test_corpus.encode('utf-8'))) * 100, 2), '%')
 # 51.5 %
 
 print("GZip Compression ratio:", round((1 - len(compressed_gzip) / len(test_corpus.encode('utf-8'))) * 100, 2), '%')
@@ -106,8 +106,6 @@ for _ in range(10):
     ac = AcumenCompressor(vocab_size = 300, verbose = True)
     compressed_ac = ac.compress_list([c.encode('utf-8') for c in corpora])
     sizes_ours_orderless.append(len(b"".join(compressed_ac)))
-
-    # print(ac.merges)
 
 print('gzip Sizes:', sizes_gzip, np.mean(sizes_gzip), np.std(sizes_gzip))
 print('AC Sizes:', sizes_ours, np.mean(sizes_ours), np.std(sizes_ours))

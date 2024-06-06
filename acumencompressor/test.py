@@ -3,30 +3,35 @@ import string
 import random
 import gzip
 import numpy as np
+import time
 
 
 def test_sanity():
     test_corpus = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(1000))
-    ac = AcumenCompressor(vocab_size = 512, verbose = True)
+    ac = AcumenCompressor(vocab_size = 300, verbose = True)
 
+    start_time = time.time()
     compressed = ac.compress(test_corpus.encode('utf-8'))
-    print(compressed)
-
+    end_time = time.time()
     uncompressed = ac.uncompress(compressed).decode('utf-8', errors = 'replace')
-    print(uncompressed)
 
     assert test_corpus == uncompressed
     assert len(compressed) < len(test_corpus.encode('utf-8')), "No compression performed!!!"
 
+    gzip_start_time = time.time()
     compressed_gzip = gzip.compress(test_corpus.encode('utf-8'))
+    gzip_end_time = time.time()
 
     print("Size before compression:", len(test_corpus.encode('utf-8')))
     print("Size after compression:", len(compressed))
     print("Size after gzip compression:", len(compressed_gzip))
 
+    print("Time taken for AcumenCompressor:", end_time - start_time)
+    print("Time taken for GZip:", gzip_end_time - gzip_start_time)
+
     print("Compression ratio:", round((1 - len(compressed) / len(test_corpus.encode('utf-8'))) * 100, 2), '%')
     print("GZip Compression ratio:", round((1 - len(compressed_gzip) / len(test_corpus.encode('utf-8'))) * 100, 2), '%')
-    
+
 
 def test_ordering():
     corpora = [

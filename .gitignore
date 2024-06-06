@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+acumencompressor/test2.py
+
 # Distribution / packaging
 .Python
 build/
