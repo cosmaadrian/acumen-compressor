@@ -48,6 +48,7 @@ class BPETokenizer:
             range_fn = range
 
         # secret sauce?
+        # TODO fix this, it should work without sorting the files. Something is wrong with 'merges'?
         ids = sorted([list(text_bytes) for text_bytes in list_of_texts])
 
         for i in range_fn(num_merges):

@@ -5,7 +5,7 @@ Coded with love and coffee ☕ by [Adrian Cosma](https://scholar.google.com/cita
 <a href="https://www.buymeacoffee.com/cosmadrian" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 # Description
-**`AcumenCompressor`** is designed as a simple data compression tool, using Byte Pair Encoding (BPE), combined with Huffman codes. Compared to other compression algorithms like LZ77 / LZSS (used by gzip), `BPE+HC` is **deterministic** and should be agnostic to the order of target elements.
+**`AcumenCompressor`** is designed as a simple data compression tool, using Byte Pair Encoding (BPE), combined with Huffman codes. Compared to other compression algorithms like LZ77 / LZSS, which use a sliding-window approach to compression (i.e. gzip), `BPE+HC` is **deterministic** and should be agnostic to the order of target elements when compressing multiple files.
 
 Moreover, the combination of `BPE+HC` obtains a better compression ratio compared to `gzip` at the expense of computation time.
 
