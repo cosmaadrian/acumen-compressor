@@ -18,10 +18,14 @@ def test_sanity():
     assert test_corpus == uncompressed
     assert len(compressed) < len(test_corpus.encode('utf-8')), "No compression performed!!!"
 
+    compressed_gzip = gzip.compress(test_corpus.encode('utf-8'))
+
     print("Size before compression:", len(test_corpus.encode('utf-8')))
     print("Size after compression:", len(compressed))
+    print("Size after gzip compression:", len(compressed_gzip))
 
     print("Compression ratio:", round((1 - len(compressed) / len(test_corpus.encode('utf-8'))) * 100, 2), '%')
+    print("GZip Compression ratio:", round((1 - len(compressed_gzip) / len(test_corpus.encode('utf-8'))) * 100, 2), '%')
     
 
 def test_ordering():
